@@ -54,7 +54,24 @@ while True: # starting of main menu
         new_contact_name = input("\nEnter Name Of Contact : ") # input the name for new contact
         new_contact_number = input("Enter Number ( With Country Code) eg . +91xxx : ") # input the number for new contact
 
-        addcontact(new_contact_name,new_contact_number,"normal")
+        while True: # loop till the user enter correct input for add contact as favourite or not 
+
+            is_add_to_fav = input("Wanna Add This Contact As Favourite Or Not ? ( Y / n ) : ") # input from user if he/she want to add this contact to favourites or not
+
+            contact_type = "" # empty string variable to store contact type either favourite or normal
+
+            if is_add_to_fav.lower() == "y": # if user enter y , means yes he/she wants to add this contact as favourites
+                contact_type = "favourite" # set the variable value to favourite
+                break # break the loop 
+
+            elif is_add_to_fav.lower() == "n": # if user enter n , means no he/she dont want to add this contact as favourite
+                contact_type = "normal" # as user enters no than the contact type value set to 'normal'
+                break # break the loop
+
+            else: # if user enters other than y or n 
+                print("Please Enter Either 'y' or 'n'") # displays message for user to warn him for enter the valid input
+
+        addcontact(new_contact_name,new_contact_number,"normal") # calls the function which adds the new contact to file
 
     elif input_choice == 0: # if input choice from user is 0 ( to exit program )
 
