@@ -35,7 +35,6 @@ def addcontact(name : str,number : str,contact_type : str): # function to add co
     print("\nContact Details Added Successfully") # after successfully adding new contact details to file displays message
     return # return to called
 
-
 # main code starts
 
 while True: # starting of main menu
@@ -73,7 +72,13 @@ while True: # starting of main menu
                 print("Please Enter Either 'y' or 'n'") # displays message for user to warn him for enter the valid input
 
         addcontact(new_contact_name,new_contact_number,"normal") # calls the function which adds the new contact to file
-    
+
+    elif input_choice == 2: # if input choice from user is 1 ( to remove contact )
+
+        number_or_name = input("\nEnter Either Number Of Contact Or Name : ")
+
+        remove_contact(number_or_name)
+
     elif input_choice == 0: # if input choice from user is 0 ( to exit program )
 
         print("\nProgram Exited -\n") # display message
