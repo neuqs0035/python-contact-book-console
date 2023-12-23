@@ -43,6 +43,7 @@ while True: # starting of main menu
     print("\nMain Menu\n") # main menu title
 
     print("1 ) Add Contacts") # option for add contact
+    print("2 ) Remove Contacts") # option for removing contact
     print("0 ) Quit") # option to quit app / program
 
     input_choice = int(input("\n_ : "))
@@ -72,7 +73,7 @@ while True: # starting of main menu
                 print("Please Enter Either 'y' or 'n'") # displays message for user to warn him for enter the valid input
 
         addcontact(new_contact_name,new_contact_number,"normal") # calls the function which adds the new contact to file
-
+    
     elif input_choice == 0: # if input choice from user is 0 ( to exit program )
 
         print("\nProgram Exited -\n") # display message
