@@ -185,6 +185,7 @@ def update_contacts():
             update_input_choice = int(input("\nEnter Update Input Choice : "))
 
             message = ""
+
             if update_input_choice == 1 :
 
                 new_name = input("\nEnter New Name : ")
@@ -252,6 +253,7 @@ while True: # starting of main menu
     print("2 ) Remove Contacts") # option for removing contact
     print("3 ) Search Contacts") # option for searching contact
     print("4 ) Update Contact Details") # option for updating contact details
+    print("5 ) Show All Contacts Details") # option for showing all contacts details 
     print("0 ) Quit") # option to quit app / program
 
     input_choice = int(input("\n_ : "))
@@ -297,6 +299,10 @@ while True: # starting of main menu
     elif input_choice == 4:
 
         update_contacts()
+
+    elif input_choice == 5:
+
+        show_all_contact_details()
 
     elif input_choice == 0: # if input choice from user is 0 ( to exit program )
 
