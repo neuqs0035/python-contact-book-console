@@ -264,6 +264,34 @@ def show_all_contact_details():
             print(f"{index} )  {contact_detail_list[0]}    {contact_detail_list[1]}    {contact_detail_list[2]}",end="")
         
         print("")
+
+def show_all_favourite_contact_details():
+
+    file = open("contacts.csv","r")
+
+    all_contacts_data = file.readlines()
+
+    if(len(all_contacts_data) == 0):
+        print("\nNo Contacts Found")
+    
+    else:
+
+        counter = 0
+
+        print("\nFavourite Contact Details")
+
+        for contact in all_contacts_data:
+
+            contact_details_list = contact.split(",")
+
+            if(contact_details_list[2] == "favourite\n"):
+                counter += 1
+                print(f"{counter} )  {contact_details_list[0]}    {contact_details_list[1]}    {contact_details_list[2]}",end="")
+        
+        print("\n")
+
+        if(counter == 0):
+            print("No Favourite Contact Found")
 # main code starts
 
 while True: # starting of main menu
