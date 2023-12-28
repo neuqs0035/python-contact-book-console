@@ -99,6 +99,7 @@ while True: # starting of main menu
 
     print("1 ) Add Contacts") # option for add contact
     print("2 ) Remove Contacts") # option for removing contact
+    print("3 ) Search Contacts") # option for searching contact
     print("0 ) Quit") # option to quit app / program
 
     input_choice = int(input("\n_ : "))
@@ -134,6 +135,12 @@ while True: # starting of main menu
         number_or_name = input("\nEnter Either Number Of Contact Or Name : ")
 
         remove_contact(number_or_name) # function called to remove contact 
+
+    elif input_choice == 3: 
+
+        number_or_name = input_choice("\nEnter Either Number Or Name Of Contact You Want To Search : ")
+
+        search_contact(number_or_name) # function called to search contact
 
     elif input_choice == 0: # if input choice from user is 0 ( to exit program )
 
