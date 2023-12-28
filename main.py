@@ -1,4 +1,4 @@
-print("\n\t\tWelcome\tContact Book") # title
+print("\n\t\t\t\t\tWelcome\tContact Book") # title
 
 def addcontact(name : str,number : str,contact_type : str): # function to add contacts to contacts.csv
    
@@ -91,6 +91,59 @@ def remove_contact(name_or_number : str): # function to remove contact based on 
         else:
             print("\nContact Not Found , You Can Add New Contact Using Option 1") # display message that contact not found
 
+def is_matched(str1 : str , str2: str) -> bool:
+
+    matched = False
+
+    for index,character in enumerate(str1):
+        if(character == str2[index]):
+            matched = True
+        else:
+            matched = False
+        
+    return matched
+
+def search_contact(number_or_name : str):
+
+    file = open("contacts.csv","r")
+
+    all_contacts_data = file.readlines()
+
+    if(len(all_contacts_data) == 0):
+        print("\nContact Not Found , You Can Add Contact In 1st Opion Of Main Menu")
+    
+    else:
+
+        is_contact_found = False
+        matched_contact = []
+
+        for single_contact in all_contacts_data:
+
+            contact_details_list = single_contact.split(",")
+            
+            if(is_matched(number_or_name,contact_details_list[0])):
+
+                matched_contact.append(single_contact)
+                is_contact_found = True
+            
+            elif(is_matched(number_or_name,contact_details_list[1])):
+
+                matched_contact.append(single_contact)
+                is_contact_found = True
+        
+        if(not is_contact_found):
+
+            print("\nContact Not Found , You Can Add Contact In 1st Opion Of Main Menu")
+
+        else:
+
+            print("\nMatched Contacts\n")
+
+            for index,contact in enumerate(matched_contact):
+                contact_lst = contact.split(",")
+                print(f"{index} )    {contact_lst[0]}    {contact_lst[1]}    {contact_lst[2]}",end="")
+            
+            print("")
 # main code starts
 
 while True: # starting of main menu
@@ -138,7 +191,7 @@ while True: # starting of main menu
 
     elif input_choice == 3: 
 
-        number_or_name = input_choice("\nEnter Either Number Or Name Of Contact You Want To Search : ")
+        number_or_name = input("\nEnter Either Number Or Name Of Contact You Want To Search : ")
 
         search_contact(number_or_name) # function called to search contact
 
