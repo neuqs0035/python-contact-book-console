@@ -243,6 +243,27 @@ def update_contacts():
             file.close()
 
             print("\n" + message)
+
+
+def show_all_contact_details():
+    file = open("contacts.csv","r")
+
+    all_contacts_data = file.readlines()
+
+    if(len(all_contacts_data) == 0):
+        print("\nNo Contact Found")
+
+    else:
+
+        print("\nAll Available Contact Details\n")
+
+        for index,contact in enumerate(all_contacts_data,1):
+
+            contact_detail_list = contact.split(",")
+
+            print(f"{index} )  {contact_detail_list[0]}    {contact_detail_list[1]}    {contact_detail_list[2]}",end="")
+        
+        print("")
 # main code starts
 
 while True: # starting of main menu
