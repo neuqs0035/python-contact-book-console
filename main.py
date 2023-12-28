@@ -108,7 +108,7 @@ def search_contact(number_or_name : str):
     file = open("contacts.csv","r")
 
     all_contacts_data = file.readlines()
-
+    file.close()
     if(len(all_contacts_data) == 0):
         print("\nContact Not Found , You Can Add Contact In 1st Opion Of Main Menu")
     
@@ -144,6 +144,7 @@ def search_contact(number_or_name : str):
                 print(f"{index} )    {contact_lst[0]}    {contact_lst[1]}    {contact_lst[2]}",end="")
             
             print("")
+
 # main code starts
 
 while True: # starting of main menu
@@ -153,6 +154,7 @@ while True: # starting of main menu
     print("1 ) Add Contacts") # option for add contact
     print("2 ) Remove Contacts") # option for removing contact
     print("3 ) Search Contacts") # option for searching contact
+    print("4 ) Update Contact Details") # option for updating contact details
     print("0 ) Quit") # option to quit app / program
 
     input_choice = int(input("\n_ : "))
@@ -194,6 +196,10 @@ while True: # starting of main menu
         number_or_name = input("\nEnter Either Number Or Name Of Contact You Want To Search : ")
 
         search_contact(number_or_name) # function called to search contact
+
+    elif input_choice == 4:
+
+        update_contacts()
 
     elif input_choice == 0: # if input choice from user is 0 ( to exit program )
 
