@@ -275,6 +275,7 @@ while True: # starting of main menu
     print("3 ) Search Contacts") # option for searching contact
     print("4 ) Update Contact Details") # option for updating contact details
     print("5 ) Show All Contacts Details") # option for showing all contacts details 
+    print("6 ) Show All Favourite Contacts Details") # option for showing all favourite contact details
     print("0 ) Quit") # option to quit app / program
 
     input_choice = int(input("\n_ : "))
@@ -324,6 +325,10 @@ while True: # starting of main menu
     elif input_choice == 5:
 
         show_all_contact_details()
+
+    elif input_choice == 6:
+
+        show_all_favourite_contact_details()
 
     elif input_choice == 0: # if input choice from user is 0 ( to exit program )
 
