@@ -145,6 +145,103 @@ def search_contact(number_or_name : str):
             
             print("")
 
+def update_contacts():
+
+    file = open("contacts.csv","r")
+
+    all_contacts_data = file.readlines()
+
+    file.close()
+
+    if(len(all_contacts_data) == 0):
+        print("\nNo Contacts Found")
+    
+    else:
+        print("\nAvailable Contacts\n")
+
+        for index,contact in enumerate(all_contacts_data,1):
+
+            contact_detail_list = contact.split(",")
+
+            print(f"{index} ) {contact_detail_list[0]}    {contact_detail_list[1]}    {contact_detail_list[2]}",end="")
+
+        print("")
+
+        update_index = int(input("\nEnter Index Number Of Contact You Want To Update , Or Enter '0' To Cancel : "))
+
+        if(update_index == 0):
+            print("\nUpdate Canceled")
+        elif update_index-1 > len(all_contacts_data) or (update_index < 0):
+            print("\nPlease Enter Valid Index Number From Above")
+        else:
+
+            print("\nUpdate Menu\n")
+
+            print("1 ) Update Name ")
+            print("2 ) Update Number")
+            print("3 ) Update Section ( favourite / normal )")
+            print("0 ) None , Exit")
+
+            update_input_choice = int(input("\nEnter Update Input Choice : "))
+
+            message = ""
+            if update_input_choice == 1 :
+
+                new_name = input("\nEnter New Name : ")
+                old_contact_data = all_contacts_data[update_index-1].split(",")
+                updated_contact_str = new_name + "," + old_contact_data[1] + "," + old_contact_data[2]
+
+                all_contacts_data[update_index-1] = updated_contact_str
+                
+                message = "Name Updated Successfully"
+
+            elif update_input_choice == 2:
+
+                new_number = input("\nEnter New Number : ")
+
+                old_contact_data = all_contacts_data[update_index-1].split(",")
+                updated_contact_str = old_contact_data[0] + "," + new_number + "," + old_contact_data[2]
+
+                all_contacts_data[update_index-1] = updated_contact_str
+                
+                message = "Number Updated Successfully"
+
+            elif update_input_choice == 3:
+                old_contact_data = all_contacts_data[update_index-1].split(",")
+
+                if( old_contact_data[2] == "normal\n"):
+
+                    to_favourite = input("\nDo You Wanna Make This Contact Favourite ? (y/n) : ")
+
+                    if(to_favourite.lower() == "y"):
+                        updated_contact_str = old_contact_data[0] + "," + old_contact_data[1] + ",favourite\n"
+                        all_contacts_data[update_index-1] = updated_contact_str
+                        message = "Contact Successfully Added To Favourites"
+                    else:
+                        message = "Contact Section Remains As It Is"
+                    
+                else : 
+
+                    remove_from_favourite = input("\nDo You Wanna Remove This Contact From Favourite ? (y/n) : ")
+
+                    if(remove_from_favourite.lower() == "y"):
+                        updated_contact_str = old_contact_data[0] + "," + old_contact_data[1] + ",normal\n"
+                        all_contacts_data[update_index-1] = updated_contact_str
+                        message = "Contact Successfully Removed From Favourites"
+                    
+                    else:
+                        message - "Contact Section Remain As It Is"
+
+            elif update_input_choice == 0:
+                print("\nUpdate Canceled")
+
+            file = open("contacts.csv","w")
+
+            file.writelines(all_contacts_data)
+
+            file.close()
+
+            print("\n" + message)
 # main code starts
 
 while True: # starting of main menu
